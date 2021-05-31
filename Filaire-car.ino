@@ -47,58 +47,39 @@ void setup()
 
 void loop()
 {  
+ 
+  val = analogRead(portPot); // Valeur du potentiomètre
+  valTurn = analogRead(portPotTurn); // Valeur du potentiomètre tournant
   
- // Code bon.
-  //val = analogRead(portPot); // Valeur du potentiomètre
-  //valTurn = analogRead(portPotTurn); // Valeur du potentiomètre tournant
-  
-  //valMoteur = map(val,0,1023,0,255);
+  valMoteur = map(val,0,1023,0,255);
 
-  //if(val > 511.5) {
-    //  valMoteur = map(val,1023/2,1023,0,255);
-    //  digitalWrite(pinM1, LOW);
-    //  digitalWrite(pinM2, LOW);
+  if(val > 511.5) {
+     valMoteur = map(val,1023/2,1023,0,255);
+     digitalWrite(pinM1, LOW);
+     digitalWrite(pinM2, LOW);
 
-//      if(valTurn > 1023/2) {
-//          left(valMoteur);
-//      } else if(valTurn < 1023/2 and valTurn > 409) {
-//          defaut(valMoteur);
-//      } else if(valTurn < 409) {
-//          rigth(valMoteur);
-////      }
+     if(valTurn > 1023/2) {
+         left(valMoteur);
+     } else if(valTurn < 1023/2 and valTurn > 409) {
+         defaut(valMoteur);
+     } else if(valTurn < 409) {
+         rigth(valMoteur);
+//      }
       
-//  } else {
-//      valMoteur = map(val,0,1023/2,255,0);
- //     digitalWrite(pinM1, HIGH);
- //     digitalWrite(pinM2, HIGH);
-  //    
-  //    if(valTurn > 1023/2) {
-  //        left(valMoteur);
- //     } else if(valTurn < 1023/2 and valTurn > 409) {
- //         defaut(valMoteur);
- //     } else if(valTurn < 409) {
- //         rigth(valMoteur);
- //     }
+ } else {
+     valMoteur = map(val,0,1023/2,255,0);
+     digitalWrite(pinM1, HIGH);
+     digitalWrite(pinM2, HIGH);
+     
+     if(valTurn > 1023/2) {
+         left(valMoteur);
+     } else if(valTurn < 1023/2 and valTurn > 409) {
+         defaut(valMoteur);
+     } else if(valTurn < 409) {
+         rigth(valMoteur);
+     }
       
- // }
-
-  if (bluetooth.available()) {
-    message = bluetooth.read();
-    Serial.println(message);
-    Serial.println("--------------------");
-    if(message.toInt() == 49) {
-        up(255);
-    }else if(message.toInt() == 50) {
-        rigth(255);
-    }else if(message.toInt() == 51) {
-        left(255);
-    }else if(message.toInt() == 52) {
-        back(255);    
-    }else if(message.toInt() == 53){
-        up(0);
-        back(0);
-    }
-  }
+ }
   
   delay(500);
   
