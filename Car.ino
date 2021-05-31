@@ -39,22 +39,49 @@ void loop()
   if (bluetooth.available()) {
     message = bluetooth.read();
     
-    if(message.toInt() == 49) {
+    if(message.toInt() == 49) { // Mode avancer du robot
         up(255);
         
-    }else if(message.toInt() == 50) {
+    }else if(message.toInt() == 50) { // Mode tournée a droite du robot
         rigth(255);
         
-    }else if(message.toInt() == 51) {
+    }else if(message.toInt() == 51) { // Mode tournée a gauche du robot
         left(255);
         
-    } else if(message.toInt() == 52) {
+    } else if(message.toInt() == 52) { // Mode reculer du robot
         back(255);
         
-    }else if(message.toInt() == 53){
+    }else if(message.toInt() == 53){ // Mode stop du robot
         up(0);
         back(0);
         
+    }else if(message.toInt() == 54) { // Mode auto du robot
+      up(255);
+      delay(5000);
+      
+      rigth(255);
+      delay(800);
+      
+      up(100);
+      delay(4100);
+      
+      rigth(255);
+      delay(800);
+      
+      up(255);
+      delay(5000);
+      
+      rigth(255);
+      delay(800);
+      
+      up(100);
+      delay(4100);
+
+      rigth(255);
+      delay(800);
+      
+      up(0);
+      
     }
   }
 
