@@ -6,8 +6,6 @@ String message;
 * Déclaration/Initialisation de cariable de port.
 */
 
-SoftwareSerial bluetooth(7, 8);
-
 // Pin principaux.
 int pinM1 = 4;
 int pinM2 = 12;
