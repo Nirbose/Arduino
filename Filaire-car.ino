@@ -62,7 +62,7 @@ void loop()
          defaut(valMoteur);
      } else if(valTurn < 409) {
          rigth(valMoteur);
-//      }
+     }
       
  } else {
      valMoteur = map(val,0,1023/2,255,0);
